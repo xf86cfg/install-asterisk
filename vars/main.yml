@@ -2,8 +2,9 @@
 # vars file for install-asterisk
 asterisk_user: asterisk
 asterisk_group: asterisk
+configure_user: true
 iasterisk_srcdir: /usr/src/iasterisk/
-iasterisk_url: http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-13-current.tar.gz
+iasterisk_url: http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-15-current.tar.gz
 iasterisk_url_sounds: http://downloads.asterisk.org/pub/telephony/sounds/asterisk-core-sounds-en-alaw-current.tar.gz
 iasterisk_path_sound: /var/lib/asterisk/sounds/en
 iasterisk_odbc_support: false

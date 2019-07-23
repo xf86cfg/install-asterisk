@@ -25,3 +25,6 @@
     - bzip2
     - jansson-devel
     - make
+    - wget
+    - subversion
+    - vim-enhanced
