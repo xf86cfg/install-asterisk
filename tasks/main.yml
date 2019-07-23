@@ -1,6 +1,8 @@
 ---
 - include_tasks: install_odbc.yml
   when: iasterisk_odbc_support
+- include_tasks: install_epel.yml
+  when: no_epel_installed
 - include_tasks: install_yum_packages.yml
 - include_tasks: install_dahdi.yml
   when: iasterisk_dahdi_support

@@ -1,0 +1,12 @@
+---
+# tasks file for installing required packages
+- name: Download epel
+  get_url:
+    url: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    dest: /tmp/epel-release-latest-7.noarch.rpm
+
+- name: Install epel
+  yum: 
+    name: /tmp/epel-release-latest-7.noarch.rpm
+    state: present
+ 
