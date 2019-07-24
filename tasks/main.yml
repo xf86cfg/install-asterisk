@@ -12,3 +12,4 @@
   when: configure_user is defined
 - include_tasks: configure_odbc.yml
   when: iasterisk_odbc_support
+- include_tasks: install_service.yml

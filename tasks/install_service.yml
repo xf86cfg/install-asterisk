@@ -1,0 +1,35 @@
+---
+
+- name: "Create asterisk.service"
+  file:
+    path: "/usr/lib/systemd/system/asterisk.service"
+    state: touch
+
+- name: "Configure asterisk.service"
+  ini-file:
+    dest: "/usr/lib/systemd/system/asterisk.service"
+    section: "{{ item.section }}" 
+    option: "{{ item.option }}" 
+    value: "{{ item.value }}"
+  with_items:
+    - { section: "Unit", option: "Description", value: "Asterisk PBX And Telephony Daemon" }
+    - { section: "Unit", option: "After", value: "network.target" }
+    - { section: "Service", option: "User", value: "asterisk" }
+    - { section: "Service", option: "ExecStart", value: "/usr/sbin/asterisk -f -C /etc/asterisk/asterisk.conf" }
+    - { section: "Service", option: "ExecStop", value: "/usr/sbin/asterisk -rx 'core stop now'" }
+    - { section: "Service", option: "ExecReload", value: "/usr/sbin/asterisk -rx 'core reload'" }
+    - { section: "Service", option: "Restart", value: "always" }
+    - { section: "Service", option: "RestartSec", value: "10s" }
+    - { section: "Service", option: "TimeoutStartSec", value: "30" }
+    - { section: "Service", option: "TimeoutStopSec", value: "15" }
+    - { section: "Install", option: "WantedBy", value: "multi-user.target" }
+
+- name: enable service asterisk.service
+  systemd:
+    name: asterisk.service
+    enabled: yes
+
+- name: starting service asterisk.service
+  systemd:
+    name: asterisk.service
+    state: started
