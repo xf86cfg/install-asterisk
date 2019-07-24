@@ -1,13 +1,13 @@
 ---
-
-- name: "Create asterisk.service"
+# Installing Asterisk service
+- name: Create asterisk service
   file:
-    path: "/usr/lib/systemd/system/asterisk.service"
+    path: /usr/lib/systemd/system/asterisk.service
     state: touch
 
-- name: "Configure asterisk.service"
+- name: Configure asterisk service
   ini-file:
-    dest: "/usr/lib/systemd/system/asterisk.service"
+    dest: /usr/lib/systemd/system/asterisk.service
     section: "{{ item.section }}" 
     option: "{{ item.option }}" 
     value: "{{ item.value }}"
