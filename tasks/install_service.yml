@@ -4,6 +4,11 @@
   file:
     path: /usr/lib/systemd/system/asterisk.service
     state: touch
+    mode: u+rw,g-wx,o-rwx
+    owner: root
+    group: root
+    modification_time: preserve
+    access_time: preserve
 
 - name: configure asterisk service
   ini-file:
@@ -28,7 +33,7 @@
   systemd:
     name: asterisk.service
     enabled: yes
-    
+
 - name: starting service asterisk.service
   systemd:
     name: asterisk.service
