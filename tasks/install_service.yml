@@ -1,11 +1,11 @@
 ---
 # Installing Asterisk service
-- name: Create asterisk service
+- name: create asterisk service
   file:
     path: /usr/lib/systemd/system/asterisk.service
     state: touch
 
-- name: Configure asterisk service
+- name: configure asterisk service
   ini-file:
     dest: /usr/lib/systemd/system/asterisk.service
     section: "{{ item.section }}" 
@@ -28,7 +28,7 @@
   systemd:
     name: asterisk.service
     enabled: yes
-
+    
 - name: starting service asterisk.service
   systemd:
     name: asterisk.service
