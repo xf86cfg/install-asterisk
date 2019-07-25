@@ -4,14 +4,9 @@
   file:
     path: /usr/lib/systemd/system/asterisk.service
     state: touch
-    mode: u+rw,g-wx,o-rwx
-    owner: root
-    group: root
-    modification_time: preserve
-    access_time: preserve
 
 - name: configure asterisk service
-  ini-file:
+  ini_file:
     dest: /usr/lib/systemd/system/asterisk.service
     section: "{{ item.section }}" 
     option: "{{ item.option }}" 
